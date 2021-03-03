@@ -253,6 +253,12 @@ void LLVMRustAddLastExtensionPasses(
 #define SUBTARGET_HEXAGON
 #endif
 
+#ifdef LLVM_COMPONENT_ELBRUS
+#define SUBTARGET_ELBRUS SUBTARGET(ELBRUS)
+#else
+#define SUBTARGET_ELBRUS
+#endif
+
 #define GEN_SUBTARGETS                                                         \
   SUBTARGET_X86                                                                \
   SUBTARGET_ARM                                                                \
@@ -264,6 +270,7 @@ void LLVMRustAddLastExtensionPasses(
   SUBTARGET_MSP430                                                             \
   SUBTARGET_SPARC                                                              \
   SUBTARGET_HEXAGON                                                            \
+  SUBTARGET_ELBRUS                                                             \
   SUBTARGET_RISCV                                                              \
 
 #define SUBTARGET(x)                                                           \

@@ -85,6 +85,7 @@ fn main() {
         "sparc",
         "nvptx",
         "hexagon",
+        "elbrus",
     ];
 
     let mut version_cmd = Command::new(&llvm_config);
@@ -193,7 +194,7 @@ fn main() {
     let mut cmd = Command::new(&llvm_config);
     cmd.arg(llvm_link_arg).arg("--libs");
 
-    if !is_crossed {
+    if !is_crossed || target.contains("e2k64") {
         cmd.arg("--system-libs");
     } else if target.contains("windows-gnu") {
         println!("cargo:rustc-link-lib=shell32");

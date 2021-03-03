@@ -595,6 +595,7 @@ impl<'a, Ty> FnAbi<'a, Ty> {
             "nvptx" => nvptx::compute_abi_info(self),
             "nvptx64" => nvptx64::compute_abi_info(self),
             "hexagon" => hexagon::compute_abi_info(self),
+            "e2k64" => (), // backend always C-abi, and ignores this attributes (okay ¯\_(ツ)_/¯)
             "riscv32" | "riscv64" => riscv::compute_abi_info(cx, self),
             "wasm32" if cx.target_spec().target_os != "emscripten" => {
                 wasm32_bindgen_compat::compute_abi_info(self)
